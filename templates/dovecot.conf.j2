@@ -26,14 +26,14 @@ ssl_prefer_server_ciphers = yes
 
 service imap-login {
     inet_listener imap {
-        port = {{ imap_port }}
+        port = {{ dovecot_imap_port }}
     }
 }
 
 
 service managesieve-login {
     inet_listener sieve {
-        port = {{ managesieve_port }}
+        port = {{ dovecot_managesieve_port }}
     }
 }
 
@@ -111,7 +111,7 @@ mail_gid = {{ dovecot_user }}
 mail_privileged_group = {{ dovecot_user }}
 
 
-mail_home = {{ vmail_dir }}/mailboxes/%d/%n
+mail_home = {{ dovecot_vmail_dir }}/mailboxes/%d/%n
 mail_location = maildir:~/mail:LAYOUT=fs
 
 
@@ -152,9 +152,9 @@ namespace inbox {
 
 
 plugin {
-    sieve_before = {{ vmail_dir }}/sieve/global/spam-global.sieve
-    sieve = {{ vmail_dir }}/sieve/%d/%n/active-script.sieve
-    sieve_dir = {{ vmail_dir }}/sieve/%d/%n/scripts
+    sieve_before = {{ dovecot_vmail_dir }}/sieve/global/spam-global.sieve
+    sieve = {{ dovecot_vmail_dir }}/sieve/%d/%n/active-script.sieve
+    sieve_dir = {{ dovecot_vmail_dir }}/sieve/%d/%n/scripts
 
     quota = maildir:User quota
     quota_exceeded_message = Benutzer %u hat das Speichervolumen überschritten. / User %u has exhausted allowed storage space.
@@ -162,7 +162,7 @@ plugin {
     antispam_backend = pipe
     antispam_spam = Spam
     antispam_trash = Trash
-    antispam_pipe_program = {{ vmail_dir }}/spampipe.sh
+    antispam_pipe_program = {{ dovecot_vmail_dir }}/spampipe.sh
     antispam_pipe_program_spam_arg = --spam
     antispam_pipe_program_notspam_arg = --ham
 }

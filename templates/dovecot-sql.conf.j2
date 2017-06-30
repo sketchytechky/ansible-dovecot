@@ -1,5 +1,5 @@
 driver=mysql
-connect = "host={{ sql_host }} dbname={{ sql_dovecot_db }} user={{ sql_dovecot_user }} password={{ sql_dovecot_user_password }}"
+connect = "host={{ dovecot_sql_host }} dbname={{ dovecot_sql_db }} user={{ dovecot_sql_user }} password={{ dovecot_sql_user_password }}"
 default_pass_scheme = SHA512-CRYPT
 
 password_query = SELECT username AS user, domain, password FROM accounts WHERE username = '%n' AND domain = '%d' and enabled = true;

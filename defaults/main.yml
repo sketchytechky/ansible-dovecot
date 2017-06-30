@@ -1,12 +1,12 @@
 ---
-imap_port: 143
-managesieve_port: 4190
+dovecot_imap_port: 143
+dovecot_managesieve_port: 4190
 
 dovecot_user: vmail
 dovecot_group: vmail
 
-sql_host: 127.0.0.1
-sql_dovecot_db: vmail
-sql_dovecot_user: "{{ dovecot_user }}"
+dovecot_sql_host: 127.0.0.1
+dovecot_sql_db: vmail
+dovecot_sql_user: "{{ dovecot_user }}"
 
-vmail_dir: /var/vmail
+dovecot_vmail_dir: /var/vmail
