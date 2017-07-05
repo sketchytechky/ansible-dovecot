@@ -11,8 +11,8 @@ protocols = imap lmtp sieve
 #######################
 
 ssl = required
-ssl_cert = <{{ ssl_cert }}
-ssl_key = <{{ ssl_key }}
+ssl_cert = <{{ dovecot_ssl_cert }}
+ssl_key = <{{ dovecot_ssl_key }}
 ssl_dh_parameters_length = 2048
 ssl_protocols = !SSLv2 !SSLv3
 ssl_cipher_list = EDH+CAMELLIA:EDH+aRSA:EECDH+aRSA+AESGCM:EECDH+aRSA+SHA256:EECDH:+CAMELLIA128:+AES128:+SSLv3:!aNULL:!eNULL:!LOW:!3DES:!MD5:!EXP:!PSK:!DSS:!RC4:!SEED:!IDEA:!ECDSA:kEDH:CAMELLIA128-SHA:AES128-SHA
@@ -84,7 +84,7 @@ protocol imap {
 }
 
 protocol lmtp {
-    postmaster_address = {{ admin_email }}
+    postmaster_address = {{ dovecot_postmaster }}
     mail_plugins = $mail_plugins sieve
 }
 
