@@ -25,11 +25,18 @@ ssl_prefer_server_ciphers = yes
 ################################
 
 service imap-login {
+{% if dovecot_imap_port %}
     inet_listener imap {
         port = {{ dovecot_imap_port }}
     }
+{% endif %}
+{% if dovecot_imaps_port %}
+    inet_listener imaps {
+        port = {{ dovecot_imaps_port }}
+        ssl = yes
+    }
+{% endif %}
 }
-
 
 service managesieve-login {
     inet_listener sieve {
