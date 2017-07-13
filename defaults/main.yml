@@ -1,6 +1,6 @@
 ---
 dovecot_imap_port: 143
-dovecot_imaps_port: 993
+dovecot_imaps_port: ""
 dovecot_managesieve_port: 4190
 
 dovecot_user: vmail
