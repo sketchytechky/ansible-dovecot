@@ -1,3 +1,4 @@
+---
 galaxy_info:
   author: Christoph Wolff, Norbert Ronecker
   description: This role installs dovecot
