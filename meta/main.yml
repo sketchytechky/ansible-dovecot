@@ -16,7 +16,6 @@ galaxy_info:
     - mail
     - mailserver
     - dovecot
-    
+
 dependencies:
-    - ROCK5GmbH.dbserver
     - ROCK5GmbH.ssl
