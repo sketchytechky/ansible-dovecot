@@ -2,6 +2,9 @@
 - name: Add vmail user
   user: name=vmail home={{ dovecot_vmail_dir }} shell=/bin/false
 
+- name: Add dovecot user
+  user: name={{ dovecot_user }} home={{ dovecot_vmail_dir }} shell=/bin/false
+
 - name: Create vmail directories
   file: path={{ item }} state=directory mode=0750 owner={{ dovecot_user }} group={{ dovecot_group }}
   with_items:
