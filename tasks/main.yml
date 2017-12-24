@@ -1,8 +1,5 @@
 ---
 - name: Add vmail user
-  user: name=vmail home={{ dovecot_vmail_dir }} shell=/bin/false
-
-- name: Add dovecot user
   user: name={{ dovecot_user }} home={{ dovecot_vmail_dir }} shell=/bin/false
 
 - name: Create vmail directories
@@ -29,14 +26,6 @@
 # Workaround for deleting the config only if packages were installed but before the new config is copied
 - name: Clear dovecot config if the package was installed
   meta: flush_handlers
-
-- name: Add dovecot keys
-  copy: src={{ dovecot_key_file }} dest={{ dovecot_ssl_key }}
-  when: dovecot_key_file
-
-- name: Add dovecot cert
-  copy: src={{ dovecot_cert_file }} dest={{ dovecot_ssl_cert }}
-  when: dovecot_cert_file
 
 - name: Add our dovecot.conf
   template: src=dovecot.conf.j2 dest=/etc/dovecot/dovecot.conf
